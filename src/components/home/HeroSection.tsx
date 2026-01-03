@@ -29,7 +29,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 mt-20 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mt-4 md:mt-0 mb-6 backdrop-blur-sm border border-primary/30">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm  mt-20 mb-6 backdrop-blur-sm border border-primary/30">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Handcrafted in Sri Lanka
             </span>

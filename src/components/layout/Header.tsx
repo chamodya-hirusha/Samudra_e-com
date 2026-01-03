@@ -71,18 +71,18 @@ export function Header() {
                 </Link>
               ))}
             </nav>
-            
+
             {/* Phone Number & Request Quote */}
             <div className="flex items-center gap-2 xl:gap-4 pl-4 xl:pl-8 border-l border-white/20">
-              <a 
-                href="tel:+94722890068" 
+              <a
+                href="tel:+94722890068"
                 className={`flex items-center gap-1 xl:gap-2 text-sm transition-colors hover:text-primary ${navTextColor}`}
               >
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 <span className="hidden xl:inline">072 289 0068</span>
                 <span className="xl:hidden">Call</span>
               </a>
-              <Button  size="sm" className="text-xs xl:text-sm bg-primary hover:text-black " asChild>
+              <Button size="sm" className="text-xs xl:text-sm bg-primary hover:text-black " asChild>
                 <Link href="/custom-order" className="hover:text-black">Request Quote</Link>
               </Button>
             </div>
