@@ -123,7 +123,7 @@ export function Header() {
                   <Phone className="w-4 h-4" />
                   072 289 0068
                 </a>
-                <Button variant="outline" className="w-full border-white hover:bg-white/80 hover:text-black" asChild>
+                <Button  className="w-full bg-primary hover:bg-primary hover:text-black" asChild>
                   <Link href="/custom-order" onClick={() => setIsMenuOpen(false)}>Request Quote</Link>
                 </Button>
               </div>
