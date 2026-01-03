@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { ProductFilters } from "@/components/shop/ProductFilters";
@@ -8,7 +8,7 @@ import { products } from "@/data/products";
 import { motion } from "framer-motion";
 import { PageHero } from "@/components/layout/PageHero";
 
-export default function ShopPage() {
+function ShopContent() {
   const searchParams = useSearchParams();
   const initialMaterial = searchParams.get("material");
 
@@ -38,6 +38,47 @@ export default function ShopPage() {
   }, [selectedMaterials, priceRange]);
 
   return (
+    <section className="py-16">
+      <div className="container mx-auto px-4">
+        <div className="flex gap-8">
+          {/* Filters */}
+          <ProductFilters
+            selectedMaterials={selectedMaterials}
+            setSelectedMaterials={setSelectedMaterials}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+            maxPrice={maxPrice}
+          />
+
+          {/* Products Grid */}
+          <div className="flex-1">
+            <div className="flex items-center justify-between mb-8">
+              <p className="text-muted-foreground">
+                Showing <span className="font-semibold text-foreground">{filteredProducts.length}</span> products
+              </p>
+            </div>
+
+            {filteredProducts.length === 0 ? (
+              <div className="text-center py-20">
+                <p className="text-muted-foreground text-lg">No products match your filters.</p>
+                <p className="text-sm text-muted-foreground mt-2">Try adjusting your filters to see more results.</p>
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {filteredProducts.map((product, index) => (
+                  <ProductCard key={product.id} product={product} index={index} />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function ShopPage() {
+  return (
     <>
       {/* Hero */}
       <PageHero
@@ -48,42 +89,9 @@ export default function ShopPage() {
       />
 
       {/* Shop Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex gap-8">
-            {/* Filters */}
-            <ProductFilters
-              selectedMaterials={selectedMaterials}
-              setSelectedMaterials={setSelectedMaterials}
-              priceRange={priceRange}
-              setPriceRange={setPriceRange}
-              maxPrice={maxPrice}
-            />
-
-            {/* Products Grid */}
-            <div className="flex-1">
-              <div className="flex items-center justify-between mb-8">
-                <p className="text-muted-foreground">
-                  Showing <span className="font-semibold text-foreground">{filteredProducts.length}</span> products
-                </p>
-              </div>
-
-              {filteredProducts.length === 0 ? (
-                <div className="text-center py-20">
-                  <p className="text-muted-foreground text-lg">No products match your filters.</p>
-                  <p className="text-sm text-muted-foreground mt-2">Try adjusting your filters to see more results.</p>
-                </div>
-              ) : (
-                <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {filteredProducts.map((product, index) => (
-                    <ProductCard key={product.id} product={product} index={index} />
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Suspense fallback={<div className="py-16 text-center">Loading...</div>}>
+        <ShopContent />
+      </Suspense>
     </>
   );
 }
