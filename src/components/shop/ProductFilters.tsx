@@ -70,7 +70,8 @@ export function ProductFilters({
 
       {/* Price Range */}
       <div>
-        <h3 className="font-serif font-semibold text-lg mb-4">Price Range</h3>
+        <h3 className="font-serif font-semibold text-lg mb-2">Price Range</h3>
+        <hr className="border-double border-gray-300 mb-4" />
         <div className="space-y-4">
           <Slider
             value={priceRange}

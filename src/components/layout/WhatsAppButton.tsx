@@ -25,7 +25,7 @@ export function WhatsAppButton({ message, productName }: WhatsAppButtonProps) {
       className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1, type: "spring", stiffness: 200 }}
+      transition={{ type: "spring", stiffness: 200 }}
       whileHover={{ rotate: [0, -10, 10, -10, 0] }}
       aria-label="Chat on WhatsApp"
     >

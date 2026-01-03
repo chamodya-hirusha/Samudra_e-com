@@ -19,7 +19,7 @@ export function FeaturedProducts() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-medium tracking-wider uppercase text-sm">
+          <span className="text-primary uppercase text-sm">
             Our Collection
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mt-2">

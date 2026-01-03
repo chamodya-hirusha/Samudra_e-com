@@ -34,7 +34,7 @@ export function PageHero({ title, description, imageSrc, subtitle }: PageHeroPro
                     className="max-w-3xl mx-auto"
                 >
                     {subtitle && (
-                        <span className="inline-block text-primary-foreground/90 font-medium tracking-wider uppercase text-xs sm:text-sm mb-3 sm:mb-4 px-3 sm:px-4 py-1 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30">
+                        <span className="inline-block text-primary font-medium tracking-wider uppercase text-xs sm:text-sm mb-3 sm:mb-4 px-3 sm:px-4 py-1 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30">
                             {subtitle}
                         </span>
                     )}

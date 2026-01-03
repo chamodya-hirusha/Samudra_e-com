@@ -10,10 +10,10 @@ import Image from "next/image";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Shop", path: "/shop" },
   { name: "Custom Orders", path: "/custom-order" },
-  { name: "Gallery", path: "/gallery" },
-  { name: "Contact", path: "/contact" },
+  { name: "Our Collection", path: "/shop" },
+  { name: "Our Work", path: "/gallery" },
+  { name: "Get In Touch", path: "/contact" },
 ];
 
 export function Header() {
@@ -64,25 +64,24 @@ export function Header() {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${pathname === link.path ? "text-primary" : navTextColor
-                    }`}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${navTextColor}`}
                 >
                   {link.name}
                 </Link>
               ))}
             </nav>
-
+            
             {/* Phone Number & Request Quote */}
             <div className="flex items-center gap-2 xl:gap-4 pl-4 xl:pl-8 border-l border-white/20">
-              <a
-                href="tel:+94722890068"
+              <a 
+                href="tel:+94722890068" 
                 className={`flex items-center gap-1 xl:gap-2 text-sm transition-colors hover:text-primary ${navTextColor}`}
               >
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 <span className="hidden xl:inline">072 289 0068</span>
                 <span className="xl:hidden">Call</span>
               </a>
-              <Button size="sm" className="text-xs xl:text-sm bg-primary hover:text-black " asChild>
+              <Button  size="sm" className="text-xs xl:text-sm bg-primary hover:text-black " asChild>
                 <Link href="/custom-order" className="hover:text-black">Request Quote</Link>
               </Button>
             </div>
@@ -114,8 +113,7 @@ export function Header() {
                   key={link.path}
                   href={link.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`text-lg font-medium py-2 transition-colors ${pathname === link.path ? "text-primary" : "text-cream"
-                    }`}
+                  className={`text-lg font-medium py-2 transition-colors hover:text-white ${navTextColor}`}
                 >
                   {link.name}
                 </Link>
