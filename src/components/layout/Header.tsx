@@ -82,8 +82,8 @@ export function Header() {
                 <span className="hidden xl:inline">072 289 0068</span>
                 <span className="xl:hidden">Call</span>
               </a>
-              <Button variant="outline" size="sm" className="text-xs xl:text-sm border-white hover:bg-white/80 hover:text-black" asChild>
-                <Link href="/custom-order">Request Quote</Link>
+              <Button  size="sm" className="text-xs xl:text-sm bg-primary hover:text-black " asChild>
+                <Link href="/custom-order" className="hover:text-black">Request Quote</Link>
               </Button>
             </div>
           </div>
