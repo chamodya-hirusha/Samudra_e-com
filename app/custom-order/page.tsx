@@ -159,9 +159,9 @@ export default function CustomOrderPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               onSubmit={handleSubmit}
-              className="bg-card rounded-2xl p-8 shadow-card"
+              className="bg-card rounded-2xl p-4 sm:p-6 md:p-8 shadow-card"
             >
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name *</Label>
                   <Input
@@ -306,7 +306,7 @@ export default function CustomOrderPage() {
                 </div>
 
                 {imagePreviews.length > 0 && (
-                  <div className="grid grid-cols-3 gap-3 mt-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mt-4">
                     {imagePreviews.map((preview, index) => (
                       <div key={index} className="relative group">
                         <div className="aspect-square rounded-lg overflow-hidden border border-border">
@@ -321,9 +321,9 @@ export default function CustomOrderPage() {
                         <button
                           type="button"
                           onClick={() => handleRemoveImage(index)}
-                          className="absolute top-1 right-1 w-6 h-6 rounded-full bg-destructive text-destructive-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                          className="absolute top-1 right-1 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-destructive text-destructive-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                         >
-                          <X className="w-4 h-4" />
+                          <X className="w-3 h-3 sm:w-4 sm:h-4" />
                         </button>
                       </div>
                     ))}

@@ -11,7 +11,7 @@ export function FeaturedProducts() {
   const featuredProducts = products.filter((p) => p.featured).slice(0, 4);
 
   return (
-    <section className="py-24">
+    <section className="py-24 mb-12 md:mb-0">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

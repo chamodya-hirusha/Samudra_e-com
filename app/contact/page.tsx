@@ -60,30 +60,30 @@ export default function ContactPage() {
       />
 
       {/* Contact Section */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <h2 className="font-serif text-2xl font-semibold text-foreground mb-8">
+              <h2 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6 md:mb-8">
                 Contact Information
               </h2>
 
-              <div className="grid sm:grid-cols-2 gap-6 mb-12">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-8 md:mb-12">
                 {contactInfo.map((info) => (
                   <div
                     key={info.title}
-                    className="bg-card rounded-xl p-6 shadow-soft"
+                    className="bg-card rounded-xl p-4 sm:p-6 shadow-soft"
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                      <info.icon className="w-6 h-6 text-primary" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 sm:mb-4">
+                      <info.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                     </div>
-                    <h3 className="font-semibold text-foreground mb-2">{info.title}</h3>
+                    <h3 className="font-semibold text-sm sm:text-base text-foreground mb-2">{info.title}</h3>
                     {info.details.map((detail, i) => (
-                      <p key={i} className="text-muted-foreground text-sm">
+                      <p key={i} className="text-xs sm:text-sm text-muted-foreground">
                         {detail}
                       </p>
                     ))}
@@ -92,7 +92,7 @@ export default function ContactPage() {
               </div>
 
               {/* Map */}
-              <div className="mt-8 rounded-xl overflow-hidden h-64 bg-muted">
+              <div className="mt-6 md:mt-8 rounded-xl overflow-hidden h-48 sm:h-56 md:h-64 bg-muted">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.5!2d80.0167!3d7.1667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMTAnMDAuMSJOIDgwwrAwMScwMC4xIkU!5e0!3m2!1sen!2slk!4v1704000000000!5m2!1sen!2slk"
                   width="100%"
@@ -111,12 +111,12 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <h2 className="font-serif text-2xl font-semibold text-foreground mb-8">
+              <h2 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6 md:mb-8">
                 Send Us a Message
               </h2>
 
-              <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 shadow-card">
-                <div className="grid sm:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-4 sm:p-6 md:p-8 shadow-card">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name *</Label>
                     <Input id="name" placeholder="Your name" required />

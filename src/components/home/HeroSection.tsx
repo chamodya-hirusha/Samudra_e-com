@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, ShoppingBag } from "lucide-react";
 
 export function HeroSection() {
-  return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+   return (
+     <section className="relative min-h-[60vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center overflow-hidden mb-12 md:mb-0">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -29,7 +29,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mb-6 backdrop-blur-sm border border-primary/30">
+            <span className="inline-flex items-center gap-2 px-4 py-2 mt-20 rounded-full bg-primary/20 text-primary-foreground text-sm font-medium mt-4 md:mt-0 mb-6 backdrop-blur-sm border border-primary/30">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Handcrafted in Sri Lanka
             </span>
@@ -39,7 +39,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-cream leading-tight mb-6"
+            className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-cream leading-tight mb-6"
           >
             Crafting Divine Art
             <span className="block text-gradient-gold mt-2">
@@ -64,13 +64,13 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button variant="hero" asChild>
+            <Button variant="hero" className="w-full sm:w-auto text-sm" asChild>
               <Link href="/shop">
                 <ShoppingBag className="mr-2 w-5 h-5" />
                 Shop Collection
               </Link>
             </Button>
-            <Button variant="hero-outline" asChild>
+            <Button variant="hero-outline" className="w-full text-sm sm:w-auto text-white hover:bg-transparent" asChild>
               <Link href="/custom-order">
                 Request Custom Order
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -83,7 +83,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-16 flex gap-12"
+            className="mt-8 md:mt-12 lg:mt-16 flex flex-wrap gap-6 md:gap-8 lg:gap-12"
           >
             {[
               { value: "28+", label: "Years Experience" },
@@ -91,8 +91,8 @@ export function HeroSection() {
               { value: "50+", label: "Temple Projects" },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="font-serif text-3xl font-bold text-primary">{stat.value}</p>
-                <p className="text-sm text-cream/60">{stat.label}</p>
+                <p className="font-serif text-2xl md:text-3xl font-bold text-primary">{stat.value}</p>
+                <p className="text-xs md:text-sm text-cream/60">{stat.label}</p>
               </div>
             ))}
           </motion.div>

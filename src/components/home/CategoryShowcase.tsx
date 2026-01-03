@@ -32,7 +32,7 @@ const categories = [
 
 export function CategoryShowcase() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-background mb-12 md:mb-0">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ export function CategoryShowcase() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {categories.map((category, index) => (
             <motion.div
               key={category.id}
@@ -73,14 +73,14 @@ export function CategoryShowcase() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-earth/90 via-earth/30 to-transparent" />
                 
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <h3 className="font-serif text-2xl font-semibold text-cream mb-2">
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 lg:p-8">
+                  <h3 className="font-serif text-xl md:text-2xl font-semibold text-cream mb-2">
                     {category.name}
                   </h3>
-                  <p className="text-cream/70 mb-4">
+                  <p className="text-sm md:text-base text-cream/70 mb-4">
                     {category.description}
                   </p>
-                  <span className="inline-flex items-center text-primary font-medium group-hover:gap-3 gap-2 transition-all">
+                  <span className="inline-flex items-center text-primary font-medium group-hover:gap-3 gap-2 transition-all text-sm md:text-base">
                     Explore Collection
                     <ArrowRight className="w-4 h-4" />
                   </span>

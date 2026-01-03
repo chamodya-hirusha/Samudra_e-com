@@ -70,13 +70,13 @@ export default function ProductDetailPage() {
           {/* Breadcrumb */}
           <Link
             href="/shop"
-            className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-16"
+            className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8 md:mb-16"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Shop
           </Link>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
             {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -121,18 +121,18 @@ export default function ProductDetailPage() {
                 <label className="block text-sm font-medium text-foreground mb-3">
                   Select Size
                 </label>
-                <div className="flex flex-wrap gap-3">
+                <div className="grid grid-cols-1 sm:flex sm:flex-wrap gap-2 sm:gap-3">
                   {product.sizes.map((size, index) => (
                     <button
                       key={size.label}
                       onClick={() => setSelectedSize(index)}
-                      className={`px-6 py-3 rounded-lg border-2 transition-all ${selectedSize === index
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-border hover:border-primary/50"
+                      className={`w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 rounded-lg border-2 transition-all text-sm sm:text-base ${selectedSize === index
+                        ? "border-primary bg-primary/10 text-primary hover:bg-[#fac528]"
+                        : "border-border hover:border-primary/50 hover:bg-[#fac528]"
                         }`}
                     >
                       <span className="block font-medium">{size.label}</span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-xs sm:text-sm text-muted-foreground">
                         Rs. {size.price.toLocaleString()}
                       </span>
                     </button>
@@ -145,14 +145,14 @@ export default function ProductDetailPage() {
                 <label className="block text-sm font-medium text-foreground mb-3">
                   Select Finish
                 </label>
-                <div className="flex flex-wrap gap-3">
+                <div className="grid grid-cols-1 sm:flex sm:flex-wrap gap-2 sm:gap-3">
                   {product.finishes.map((finish, index) => (
                     <button
                       key={finish}
                       onClick={() => setSelectedFinish(index)}
-                      className={`px-4 py-2 rounded-lg border-2 transition-all ${selectedFinish === index
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-border hover:border-primary/50"
+                      className={`w-full sm:w-auto px-3 sm:px-4 py-2 rounded-lg border-2 transition-all text-sm sm:text-base ${selectedFinish === index
+                        ? "border-primary bg-primary/10 text-primary hover:bg-[#fac528]"
+                        : "border-border hover:border-primary/50 hover:bg-[#fac528]"
                         }`}
                     >
                       {finish}
@@ -162,14 +162,14 @@ export default function ProductDetailPage() {
               </div>
 
               {/* Price */}
-              <div className="bg-secondary/50 rounded-xl p-6 mb-8">
+              <div className="bg-secondary/50 rounded-xl p-4 sm:p-6 mb-8">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-muted-foreground">Selected Price</span>
-                  <span className="font-serif text-3xl font-bold text-primary">
+                  <span className="text-sm sm:text-base text-muted-foreground">Selected Price</span>
+                  <span className="font-serif text-2xl sm:text-3xl font-bold text-primary">
                     Rs. {currentPrice.toLocaleString()}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
                   <Truck className="w-4 h-4" />
                   Delivery: {product.deliveryTime}
                 </div>
@@ -180,13 +180,13 @@ export default function ProductDetailPage() {
                 <Button
                   variant="gold"
                   size="xl"
-                  className="flex-1"
+                  className="w-full sm:flex-1"
                   onClick={() => setIsPaymentModalOpen(true)}
                 >
                   <ShoppingCart className="mr-2 w-5 h-5" />
                   Create Order
                 </Button>
-                <Button variant="gold-outline" size="xl" asChild>
+                <Button variant="gold-outline" size="xl" className="w-full sm:flex-1" asChild>
                   <Link href="/custom-order">
                     Request Custom Size
                   </Link>

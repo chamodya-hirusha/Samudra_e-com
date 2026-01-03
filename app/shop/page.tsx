@@ -7,6 +7,8 @@ import { ProductFilters } from "@/components/shop/ProductFilters";
 import { products } from "@/data/products";
 import { motion } from "framer-motion";
 import { PageHero } from "@/components/layout/PageHero";
+import { Button } from "@/components/ui/button";
+import { SlidersHorizontal } from "lucide-react";
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -18,6 +20,7 @@ function ShopContent() {
 
   const maxPrice = Math.max(...products.flatMap((p) => p.sizes.map((s) => s.price)));
   const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice]);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -37,10 +40,12 @@ function ShopContent() {
     });
   }, [selectedMaterials, priceRange]);
 
+  const hasActiveFilters = selectedMaterials.length > 0 || priceRange[0] > 0 || priceRange[1] < maxPrice;
+
   return (
-    <section className="py-16">
+    <section className="py-8 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="flex gap-8">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
           {/* Filters */}
           <ProductFilters
             selectedMaterials={selectedMaterials}
@@ -48,11 +53,28 @@ function ShopContent() {
             priceRange={priceRange}
             setPriceRange={setPriceRange}
             maxPrice={maxPrice}
+            isMobileOpen={isMobileOpen}
+            setIsMobileOpen={setIsMobileOpen}
           />
 
           {/* Products Grid */}
-          <div className="flex-1">
+          <div className="flex-1 w-full">
             <div className="flex items-center justify-between mb-8">
+              <div className="lg:hidden">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setIsMobileOpen(true)}
+                >
+                  <SlidersHorizontal className="w-4 h-4 mr-2" />
+                  Filters
+                  {hasActiveFilters && (
+                    <span className="ml-2 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
+                      {selectedMaterials.length + (priceRange[0] > 0 || priceRange[1] < maxPrice ? 1 : 0)}
+                    </span>
+                  )}
+                </Button>
+              </div>
               <p className="text-muted-foreground">
                 Showing <span className="font-semibold text-foreground">{filteredProducts.length}</span> products
               </p>

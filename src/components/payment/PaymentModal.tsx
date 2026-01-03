@@ -116,16 +116,16 @@ export function PaymentModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-[95vw] sm:max-w-lg md:max-w-2xl lg:max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-serif">Complete Your Order</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-xl sm:text-2xl font-serif">Complete Your Order</DialogTitle>
+          <DialogDescription className="text-sm">
             Secure payment processing. Your information is encrypted and safe.
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
             {/* Order Summary */}
             <div className="space-y-4">
               <h3 className="font-serif text-lg font-semibold">Order Summary</h3>
@@ -365,16 +365,17 @@ export function PaymentModal({
             </div>
           </div>
 
-          <DialogFooter className="gap-2">
+          <DialogFooter className="flex-col sm:flex-row gap-2">
             <Button
               type="button"
               variant="outline"
               onClick={() => onOpenChange(false)}
               disabled={isProcessing}
+              className="w-full sm:w-auto"
             >
               Cancel
             </Button>
-            <Button type="submit" variant="gold" disabled={isProcessing} className="min-w-[150px]">
+            <Button type="submit" variant="gold" disabled={isProcessing} className="w-full sm:w-auto sm:min-w-[150px]">
               {isProcessing ? (
                 <>
                   <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin mr-2" />
@@ -383,11 +384,13 @@ export function PaymentModal({
               ) : (
                 <>
                   <Lock className="w-4 h-4 mr-2" />
-                  {paymentType === "advance" ? (
-                    <>Pay Advance Rs. {total.toLocaleString()}</>
-                  ) : (
-                    <>Pay Rs. {total.toLocaleString()}</>
-                  )}
+                  <span className="text-sm sm:text-base">
+                    {paymentType === "advance" ? (
+                      <>Pay Advance Rs. {total.toLocaleString()}</>
+                    ) : (
+                      <>Pay Rs. {total.toLocaleString()}</>
+                    )}
+                  </span>
                 </>
               )}
             </Button>

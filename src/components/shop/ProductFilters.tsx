@@ -15,6 +15,8 @@ interface ProductFiltersProps {
   priceRange: [number, number];
   setPriceRange: (range: [number, number]) => void;
   maxPrice: number;
+  isMobileOpen: boolean;
+  setIsMobileOpen: (open: boolean) => void;
 }
 
 export function ProductFilters({
@@ -23,8 +25,9 @@ export function ProductFilters({
   priceRange,
   setPriceRange,
   maxPrice,
+  isMobileOpen,
+  setIsMobileOpen,
 }: ProductFiltersProps) {
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const toggleMaterial = (material: string) => {
     if (selectedMaterials.includes(material)) {
@@ -109,23 +112,6 @@ export function ProductFilters({
         </div>
       </div>
 
-      {/* Mobile Filter Button */}
-      <div className="lg:hidden fixed bottom-24 left-1/2 -translate-x-1/2 z-40">
-        <Button
-          variant="gold"
-          size="lg"
-          onClick={() => setIsMobileOpen(true)}
-          className="shadow-lg"
-        >
-          <SlidersHorizontal className="w-4 h-4 mr-2" />
-          Filters
-          {hasActiveFilters && (
-            <span className="ml-2 w-5 h-5 rounded-full bg-primary-foreground text-primary text-xs flex items-center justify-center">
-              {selectedMaterials.length + (priceRange[0] > 0 || priceRange[1] < maxPrice ? 1 : 0)}
-            </span>
-          )}
-        </Button>
-      </div>
 
       {/* Mobile Filter Drawer */}
       <AnimatePresence>
@@ -147,7 +133,7 @@ export function ProductFilters({
             >
               <div className="flex items-center justify-between mb-6">
                 <h2 className="font-serif text-xl font-semibold">Filters</h2>
-                <button onClick={() => setIsMobileOpen(false)}>
+                <button onClick={() => setIsMobileOpen(false)} className="p-2 rounded hover:bg-[#fac528]">
                   <X className="w-6 h-6" />
                 </button>
               </div>

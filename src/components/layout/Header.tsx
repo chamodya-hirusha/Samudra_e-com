@@ -20,6 +20,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const isProductPage = pathname?.startsWith("/product/");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +30,6 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const isProductPage = pathname?.startsWith("/product/");
 
   const headerBg = isScrolled || isProductPage
     ? "bg-black/40 backdrop-blur-md shadow-md border-b border-white/10"
@@ -59,33 +58,39 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${pathname === link.path ? "text-primary" : navTextColor
-                  }`}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-8">
+            <nav className="flex items-center gap-4 xl:gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${pathname === link.path ? "text-primary" : navTextColor
+                    }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+            
+            {/* Phone Number & Request Quote */}
+            <div className="flex items-center gap-2 xl:gap-4 pl-4 xl:pl-8 border-l border-white/20">
+              <a 
+                href="tel:+94722890068" 
+                className={`flex items-center gap-1 xl:gap-2 text-sm transition-colors hover:text-primary ${navTextColor}`}
               >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+94722890068" className={`flex items-center gap-2 text-sm ${navTextColor} hover:text-primary transition-colors`}>
-              <Phone className="w-4 h-4" />
-              072 289 0068
-            </a>
-            <Button variant={isScrolled ? "gold" : "outline"} className={!isScrolled ? "bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20" : ""} size="sm" asChild>
-              <Link href="/custom-order">Request Quote</Link>
-            </Button>
+                <Phone className="w-4 h-4 flex-shrink-0" />
+                <span className="hidden xl:inline">072 289 0068</span>
+                <span className="xl:hidden">Call</span>
+              </a>
+              <Button variant="outline" size="sm" className="text-xs xl:text-sm border-white hover:bg-white/80 hover:text-black" asChild>
+                <Link href="/custom-order">Request Quote</Link>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 ${textColor}`}
+            className={`lg:hidden p-2 hover:bg-[#fac528] ${textColor}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -120,7 +125,7 @@ export function Header() {
                   <Phone className="w-4 h-4" />
                   072 289 0068
                 </a>
-                <Button variant="gold" className="w-full" asChild>
+                <Button variant="outline" className="w-full border-white hover:bg-white/80 hover:text-black" asChild>
                   <Link href="/custom-order" onClick={() => setIsMenuOpen(false)}>Request Quote</Link>
                 </Button>
               </div>
