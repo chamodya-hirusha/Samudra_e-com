@@ -127,7 +127,7 @@ export default function ProductDetailPage() {
                       key={size.label}
                       onClick={() => setSelectedSize(index)}
                       className={`w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 rounded-lg border-2 transition-all text-sm sm:text-base ${selectedSize === index
-                        ? "border-primary bg-primary/10 text-primary hover:bg-[#fac528]"
+                        ? "border-primary bg-primary/10 text-black hover:bg-[#fac528]"
                         : "border-border hover:border-primary/50 hover:bg-[#fac528]"
                         }`}
                     >
@@ -151,7 +151,7 @@ export default function ProductDetailPage() {
                       key={finish}
                       onClick={() => setSelectedFinish(index)}
                       className={`w-full sm:w-auto px-3 sm:px-4 py-2 rounded-lg border-2 transition-all text-sm sm:text-base ${selectedFinish === index
-                        ? "border-primary bg-primary/10 text-primary hover:bg-[#fac528]"
+                        ? "border-primary bg-primary/10 text-black hover:bg-[#fac528]"
                         : "border-border hover:border-primary/50 hover:bg-[#fac528]"
                         }`}
                     >
