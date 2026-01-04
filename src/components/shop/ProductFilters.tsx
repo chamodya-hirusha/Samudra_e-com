@@ -1,17 +1,19 @@
 "use client";
 
-import { materials } from "@/data/products";
+import { materials, categories } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { X, SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ProductFiltersProps {
   selectedMaterials: string[];
   setSelectedMaterials: (materials: string[]) => void;
+  selectedCategories: string[];
+  setSelectedCategories: (categories: string[]) => void;
   priceRange: [number, number];
   setPriceRange: (range: [number, number]) => void;
   maxPrice: number;
@@ -22,12 +24,19 @@ interface ProductFiltersProps {
 export function ProductFilters({
   selectedMaterials,
   setSelectedMaterials,
+  selectedCategories,
+  setSelectedCategories,
   priceRange,
   setPriceRange,
   maxPrice,
   isMobileOpen,
   setIsMobileOpen,
 }: ProductFiltersProps) {
+  const [localPriceRange, setLocalPriceRange] = useState<[number, number]>(priceRange);
+
+  useEffect(() => {
+    setLocalPriceRange(priceRange);
+  }, [priceRange]);
 
   const toggleMaterial = (material: string) => {
     if (selectedMaterials.includes(material)) {
@@ -37,15 +46,47 @@ export function ProductFilters({
     }
   };
 
+  const toggleCategory = (categoryId: string) => {
+    if (selectedCategories.includes(categoryId)) {
+      setSelectedCategories(selectedCategories.filter((c) => c !== categoryId));
+    } else {
+      setSelectedCategories([...selectedCategories, categoryId]);
+    }
+  };
+
   const clearFilters = () => {
     setSelectedMaterials([]);
+    setSelectedCategories([]);
+    setLocalPriceRange([0, maxPrice]);
     setPriceRange([0, maxPrice]);
   };
 
-  const hasActiveFilters = selectedMaterials.length > 0 || priceRange[0] > 0 || priceRange[1] < maxPrice;
+  const hasActiveFilters = selectedMaterials.length > 0 || selectedCategories.length > 0 || localPriceRange[0] > 0 || localPriceRange[1] < maxPrice;
 
   const FilterContent = () => (
     <div className="space-y-8">
+      {/* Categories */}
+      <div>
+        <h3 className="font-serif font-semibold text-lg mb-4">Category</h3>
+        <div className="space-y-3">
+          {categories.map((category) => (
+            <div key={category.id} className="flex items-center space-x-3">
+              <Checkbox
+                id={category.id}
+                checked={selectedCategories.includes(category.id)}
+                onCheckedChange={() => toggleCategory(category.id)}
+              />
+              <Label
+                htmlFor={category.id}
+                className="text-sm font-normal cursor-pointer"
+              >
+                {category.name}
+              </Label>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Materials */}
       <div>
         <h3 className="font-serif font-semibold text-lg mb-4">Material</h3>
@@ -74,16 +115,17 @@ export function ProductFilters({
         <hr className="border-double border-gray-300 mb-4" />
         <div className="space-y-4">
           <Slider
-            value={priceRange}
+            value={localPriceRange}
             min={0}
             max={maxPrice}
             step={5000}
-            onValueChange={(value) => setPriceRange(value as [number, number])}
+            onValueChange={(value) => setLocalPriceRange(value as [number, number])}
+            onValueCommit={(value) => setPriceRange(value as [number, number])}
             className="w-full"
           />
           <div className="flex justify-between text-sm text-muted-foreground">
-            <span>Rs. {priceRange[0].toLocaleString()}</span>
-            <span>Rs. {priceRange[1].toLocaleString()}</span>
+            <span>Rs. {localPriceRange[0].toLocaleString()}</span>
+            <span>Rs. {localPriceRange[1].toLocaleString()}</span>
           </div>
         </div>
       </div>

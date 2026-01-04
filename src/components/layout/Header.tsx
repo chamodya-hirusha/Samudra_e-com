@@ -60,28 +60,31 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-4 xl:gap-8">
             <nav className="flex items-center gap-4 xl:gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${navTextColor}`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.path;
+                return (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    className={`text-sm font-medium transition-colors hover:text-primary ${isActive ? 'text-primary' : navTextColor}`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
             </nav>
-            
+
             {/* Phone Number & Request Quote */}
             <div className="flex items-center gap-2 xl:gap-4 pl-4 xl:pl-8 border-l border-white/20">
-              <a 
-                href="tel:+94722890068" 
+              <a
+                href="tel:+94722890068"
                 className={`flex items-center gap-1 xl:gap-2 text-sm transition-colors hover:text-primary ${navTextColor}`}
               >
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 <span className="hidden xl:inline">072 289 0068</span>
                 <span className="xl:hidden">Call</span>
               </a>
-              <Button  size="sm" className="text-xs xl:text-sm bg-primary hover:text-black " asChild>
+              <Button size="sm" className="text-xs xl:text-sm bg-primary hover:text-black " asChild>
                 <Link href="/custom-order" className="hover:text-black">Request Quote</Link>
               </Button>
             </div>
@@ -108,22 +111,25 @@ export function Header() {
             className="lg:hidden bg-earth border-b border-white/10"
           >
             <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`text-lg font-medium py-2 transition-colors hover:text-white ${navTextColor}`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.path;
+                return (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`text-lg font-medium py-2 transition-colors hover:text-white ${isActive ? 'text-primary' : navTextColor}`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
               <div className="pt-4 border-t border-white/10">
                 <a href="tel:+94722890068" className="flex items-center gap-2 text-cream/80 mb-4">
                   <Phone className="w-4 h-4" />
                   072 289 0068
                 </a>
-                <Button  className="w-full bg-primary hover:bg-primary hover:text-black" asChild>
+                <Button className="w-full bg-primary hover:bg-primary hover:text-black" asChild>
                   <Link href="/custom-order" onClick={() => setIsMenuOpen(false)}>Request Quote</Link>
                 </Button>
               </div>

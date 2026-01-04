@@ -26,7 +26,7 @@ export function PageHero({ title, description, imageSrc, subtitle }: PageHeroPro
             </div>
 
             {/* Content */}
-            <div className="container mx-auto px-4 relative z-10 text-center">
+            <div className="relative z-10 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -34,17 +34,32 @@ export function PageHero({ title, description, imageSrc, subtitle }: PageHeroPro
                     className="max-w-3xl mx-auto"
                 >
                     {subtitle && (
-                        <span className="inline-block text-primary font-medium tracking-wider uppercase text-xs sm:text-sm mb-3 sm:mb-4 px-3 sm:px-4 py-1 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30">
+                        <motion.span 
+                            className="inline-block text-primary font-medium tracking-wider uppercase text-xs sm:text-sm mb-3 sm:mb-4 px-3 sm:px-4 py-1 rounded-full bg-primary/20 backdrop-blur-sm border border-primary/30"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
                             {subtitle}
-                        </span>
+                        </motion.span>
                     )}
-                    <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+                    <motion.h1 
+                        className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4 sm:mb-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                    >
                         {title}
-                    </h1>
+                    </motion.h1>
                     {description && (
-                        <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto px-2">
+                        <motion.p 
+                            className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto px-2"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                        >
                             {description}
-                        </p>
+                        </motion.p>
                     )}
                 </motion.div>
             </div>

@@ -23,9 +23,9 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4 sm:mb-6">
-              <Image 
+              <Image
                 src="/assets/logo/500466709_1341615020780517_7101806636583850352_n.jpg"
-                alt="Samudra Art Center Logo" 
+                alt="Samudra Art Center Logo"
                 width={48}
                 height={48}
                 className="object-contain rounded-full"
@@ -36,7 +36,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-cream/80 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
-              Crafting divine art with devotion and precision since 1995. 
+              Crafting divine art with devotion and precision since 1995.
               Each piece is handcrafted by master artisans preserving Sri Lanka's rich sculptural heritage.
             </p>
             <div className="flex gap-3 sm:gap-4">

@@ -13,25 +13,31 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-const galleryItems = [
-  { id: 1, image: "/assets/hero-buddha.jpg", title: "Temple Buddha Installation", category: "Temple Projects" },
-  { id: 2, image: "/assets/products/dolomite-buddha-1.jpg", title: "Meditation Buddha - Dolomite", category: "Buddha Statues" },
-  { id: 3, image: "/assets/products/fiber-buddha-1.jpg", title: "Artistic Buddha Head", category: "Sculptures" },
-  { id: 4, image: "/assets/products/concrete-buddha-1.jpg", title: "Garden Buddha - Concrete", category: "Outdoor" },
-  { id: 5, image: "/assets/products/standing-buddha-1.jpg", title: "Standing Buddha - Blessing", category: "Buddha Statues" },
-  { id: 6, image: "/assets/products/buddha-face-1.jpg", title: "Museum Quality Face", category: "Art Pieces" },
+const imageFiles = [
+ 
+  "buddha-face-1.jpg",
+  "BuddhaStatueDecor_14.webp",
+  "concrete-buddha-1.jpg",
+  "dolomite-buddha-1.jpg",
+  "fiber-buddha-1.jpg",
+  "standing-buddha-1.jpg",
 ];
+
+const galleryItems = imageFiles.map((file, index) => {
+  const name = file.replace(/\..*$/, '').replace(/[_-]/g, ' ').replace(/\d+/g, '').trim();
+  return {
+    id: index + 1,
+    image: `/assets/products/${file}`,
+    title: name || "Buddha Statue",
+    category: "Completed Works"
+  };
+});
 
 export default function GalleryPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  // Duplicate items for demonstration purposes
-  const allGalleryItems = [
-    ...galleryItems,
-    ...galleryItems.map(item => ({ ...item, id: item.id + 6 })),
-    ...galleryItems.map(item => ({ ...item, id: item.id + 12 })),
-  ];
+  const allGalleryItems = galleryItems;
 
   const totalPages = Math.ceil(allGalleryItems.length / itemsPerPage);
 

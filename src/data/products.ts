@@ -2,12 +2,12 @@ export interface Product {
   id: string;
   name: string;
   description: string;
-  material: "Dolomite" | "Fiber" | "Concrete";
+  material: "Dolomite" | "Fiber" | "Concrete" | "Cloth";
   sizes: { label: string; price: number }[];
   finishes: string[];
   deliveryTime: string;
   images: string[];
-  category: "buddha-statues" | "custom-sculptures" | "decorative";
+  category: "buddha-statues" | "custom-sculptures" | "decorative" | "pirikara";
   featured?: boolean;
 }
 
@@ -25,7 +25,7 @@ export const products: Product[] = [
     ],
     finishes: ["Natural White", "Polished", "Antique"],
     deliveryTime: "2-4 weeks",
-    images: ["/products/dolomite-buddha-1.jpg"],
+    images: ["/assets/products/dolomite-buddha-1.jpg"],
     category: "buddha-statues",
     featured: true,
   },
@@ -41,7 +41,7 @@ export const products: Product[] = [
     ],
     finishes: ["Terracotta", "Bronze", "Gold Leaf"],
     deliveryTime: "1-2 weeks",
-    images: ["/products/fiber-buddha-1.jpg"],
+    images: ["/assets/products/fiber-buddha-1.jpg"],
     category: "buddha-statues",
     featured: true,
   },
@@ -58,7 +58,7 @@ export const products: Product[] = [
     ],
     finishes: ["Natural Grey", "Moss Green", "Weathered Stone"],
     deliveryTime: "3-5 weeks",
-    images: ["/products/concrete-buddha-1.jpg"],
+    images: ["/assets/products/concrete-buddha-1.jpg"],
     category: "buddha-statues",
     featured: true,
   },
@@ -74,7 +74,7 @@ export const products: Product[] = [
     ],
     finishes: ["Natural White", "Cream", "Gilded"],
     deliveryTime: "3-4 weeks",
-    images: ["/products/standing-buddha-1.jpg"],
+    images: ["/assets/products/standing-buddha-1.jpg"],
     category: "buddha-statues",
     featured: true,
   },
@@ -90,7 +90,7 @@ export const products: Product[] = [
     ],
     finishes: ["Bronze Patina", "Antique Stone", "Dark Wood"],
     deliveryTime: "2-3 weeks",
-    images: ["/products/buddha-face-1.jpg"],
+    images: ["/assets/products/buddha-face-1.jpg"],
     category: "decorative",
     featured: true,
   },
@@ -106,16 +106,137 @@ export const products: Product[] = [
     ],
     finishes: ["Sacred White", "Golden", "Temple Grey"],
     deliveryTime: "6-8 weeks",
-    images: ["/products/concrete-buddha-1.jpg"],
+    images: ["/assets/products/concrete-buddha-1.jpg"],
     category: "buddha-statues",
+  },
+  {
+    id: "atapirikara-thai-cotton",
+    name: "Atapirikara (Thai Cotton)",
+    description: "High-quality Atapirikara set made with premium Thai cotton material. Includes all necessary spiritual items for a complete offering, featuring a black Thai Pathra and sacred robes.",
+    material: "Cloth",
+    sizes: [
+      { label: "Standard", price: 12500 },
+    ],
+    finishes: ["Saffron", "Maroon", "Dark Brown"],
+    deliveryTime: "Available Now",
+    images: ["/assets/products/Thai-Cotton-Material-–-Atapirikara-with-Black-Thai-Pathra.jpg"],
+    category: "pirikara",
+    featured: true,
+  },
+  {
+    id: "pirikara1",
+    name: "Cotton Sivura With Watapatha",
+    description: "Traditional Pirikara set with essential items for Buddhist ceremonies. Includes sacred robes, offerings, and ritual items crafted with care.",
+    material: "Cloth",
+    sizes: [
+      { label: "Standard", price: 12500 },
+    ],
+    finishes: ["Saffron", "Maroon", "Dark Brown"],
+    deliveryTime: "Available Now",
+    images: ["/assets/products/pirikara1.jpg"],
+    category: "pirikara",
+  },
+  {
+    id: "pirikara2",
+    name: "Atapirikara",
+    description: "Traditional Pirikara set with essential items for Buddhist ceremonies. Includes sacred robes, offerings, and ritual items crafted with care.",
+    material: "Cloth",
+    sizes: [
+      { label: "Standard", price: 12500 },
+    ],
+    finishes: ["Saffron", "Maroon", "Dark Brown"],
+    deliveryTime: "Available Now",
+    images: ["/assets/products/pirikara2.jpg"],
+    category: "pirikara",
+  },
+  {
+    id: "pirikara3",
+    name: "'dolos Pirikara' With ' Sudu Yakada' 'pathraya' For Bikkuni",
+    description: "Traditional Pirikara set with essential items for Buddhist ceremonies. Includes sacred robes, offerings, and ritual items crafted with care.",
+    material: "Cloth",
+    sizes: [
+      { label: "Standard", price: 12500 },
+    ],
+    finishes: ["Saffron", "Maroon", "Dark Brown"],
+    deliveryTime: "Available Now",
+    images: ["/assets/products/pirikara3.jpg"],
+    category: "pirikara",
+  },
+  {
+    id: "pirikara4",
+    name: "Umbrella - Maroon Color With Golden Lace",
+    description: "Traditional Pirikara set with essential items for Buddhist ceremonies. Includes sacred robes, offerings, and ritual items crafted with care.",
+    material: "Cloth",
+    sizes: [
+      { label: "Standard", price: 12500 },
+    ],
+    finishes: ["Saffron", "Maroon", "Dark Brown"],
+    deliveryTime: "Available Now",
+    images: ["/assets/products/pirikara4.jpg"],
+    category: "pirikara",
+  },
+  {
+    id: "pirikara5",
+    name: "Muthu Kudaya Decorative Umbrella",
+    description: "Traditional Pirikara set with essential items for Buddhist ceremonies. Includes sacred robes, offerings, and ritual items crafted with care.",
+    material: "Cloth",
+    sizes: [
+      { label: "Standard", price: 12500 },
+    ],
+    finishes: ["Saffron", "Maroon", "Dark Brown"],
+    deliveryTime: "Available Now",
+    images: ["/assets/products/pirikara5.jpg"],
+    category: "pirikara",
+  },
+  {
+    id: "pirikara6",
+    name: "Muthu Kudaya (Pearl Umbrella)",
+    description: "Traditional Pirikara set with essential items for Buddhist ceremonies. Includes sacred robes, offerings, and ritual items crafted with care.",
+    material: "Cloth",
+    sizes: [
+      { label: "Standard", price: 12500 },
+    ],
+    finishes: ["Saffron", "Maroon", "Dark Brown"],
+    deliveryTime: "Available Now",
+    images: ["/assets/products/pirikara6.webp"],
+    category: "pirikara",
+  },
+  {
+    id: "pirikara7",
+    name: "Umbrella - meroon (large size)",
+    description: "Traditional Pirikara set with essential items for Buddhist ceremonies. Includes sacred robes, offerings, and ritual items crafted with care.",
+    material: "Cloth",
+    sizes: [
+      { label: "Standard", price: 12500 },
+    ],
+    finishes: ["Saffron", "Maroon", "Dark Brown"],
+    deliveryTime: "Available Now",
+    images: ["/assets/products/pirikara7.webp"],
+    category: "pirikara",
+  },
+  {
+    id: "decorative-buddha-statue",
+    name: "Decorative Buddha Statue",
+    description: "A beautifully crafted decorative Buddha statue, ideal for home altars or office spaces. Brings a sense of peace and tranquility to any environment.",
+    material: "Fiber",
+    sizes: [
+      { label: "1.5 ft", price: 22000 },
+      { label: "2 ft", price: 35000 },
+    ],
+    finishes: ["Golden", "Silver", "Antique"],
+    deliveryTime: "1-2 weeks",
+    images: ["/assets/products/BuddhaStatueDecor_14.webp"],
+    category: "decorative",
+    featured: true,
   },
 ];
 
-export const materials = ["Dolomite", "Fiber", "Concrete"] as const;
+export const materials = ["Dolomite", "Fiber", "Concrete", "Cloth"] as const;
 export const categories = [
   { id: "buddha-statues", name: "Buddha Statues" },
   { id: "custom-sculptures", name: "Custom Sculptures" },
   { id: "decorative", name: "Decorative Art" },
+  { id: "pirikara", name: "Pirikara" },
 ] as const;
 
 export const testimonials = [

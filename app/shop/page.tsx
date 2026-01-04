@@ -17,6 +17,7 @@ function ShopContent() {
   const [selectedMaterials, setSelectedMaterials] = useState<string[]>(
     initialMaterial ? [initialMaterial] : []
   );
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const maxPrice = Math.max(...products.flatMap((p) => p.sizes.map((s) => s.price)));
   const [priceRange, setPriceRange] = useState<[number, number]>([0, maxPrice]);
@@ -24,6 +25,11 @@ function ShopContent() {
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
+      // Category filter
+      if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
+        return false;
+      }
+
       // Material filter
       if (selectedMaterials.length > 0 && !selectedMaterials.includes(product.material)) {
         return false;
@@ -38,9 +44,9 @@ function ShopContent() {
 
       return true;
     });
-  }, [selectedMaterials, priceRange]);
+  }, [selectedMaterials, selectedCategories, priceRange]);
 
-  const hasActiveFilters = selectedMaterials.length > 0 || priceRange[0] > 0 || priceRange[1] < maxPrice;
+  const hasActiveFilters = selectedMaterials.length > 0 || selectedCategories.length > 0 || priceRange[0] > 0 || priceRange[1] < maxPrice;
 
   return (
     <section className="py-8 md:py-16">
@@ -50,6 +56,8 @@ function ShopContent() {
           <ProductFilters
             selectedMaterials={selectedMaterials}
             setSelectedMaterials={setSelectedMaterials}
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
             priceRange={priceRange}
             setPriceRange={setPriceRange}
             maxPrice={maxPrice}
@@ -70,7 +78,7 @@ function ShopContent() {
                   Filters
                   {hasActiveFilters && (
                     <span className="ml-2 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
-                      {selectedMaterials.length + (priceRange[0] > 0 || priceRange[1] < maxPrice ? 1 : 0)}
+                      {selectedMaterials.length + selectedCategories.length + (priceRange[0] > 0 || priceRange[1] < maxPrice ? 1 : 0)}
                     </span>
                   )}
                 </Button>

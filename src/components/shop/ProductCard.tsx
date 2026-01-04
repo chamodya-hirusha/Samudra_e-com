@@ -6,27 +6,20 @@ import { Product } from "@/data/products";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
-const imageMap: Record<string, string> = {
-  "/products/dolomite-buddha-1.jpg": "/assets/products/dolomite-buddha-1.jpg",
-  "/products/fiber-buddha-1.jpg": "/assets/products/fiber-buddha-1.jpg",
-  "/products/concrete-buddha-1.jpg": "/assets/products/concrete-buddha-1.jpg",
-  "/products/standing-buddha-1.jpg": "/assets/products/standing-buddha-1.jpg",
-  "/products/buddha-face-1.jpg": "/assets/products/buddha-face-1.jpg",
-};
-
 interface ProductCardProps {
   product: Product;
   index?: number;
 }
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
-  const lowestPrice = Math.min(...product.sizes.map((s) => s.price));
-  const imageSrc = imageMap[product.images[0]] || product.images[0];
+  const lowestPrice = Math.min(...(product.sizes?.map((s) => s.price) || [0]));
+  const imageSrc = product.images?.[0] || "/placeholder.svg";
 
   const materialColors = {
     Dolomite: "bg-cream-dark text-earth",
     Fiber: "bg-terracotta/20 text-terracotta",
     Concrete: "bg-muted text-muted-foreground",
+    Cloth: "bg-amber-100 text-amber-800",
   };
 
   return (
@@ -68,23 +61,23 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               {product.sizes[0].label} - {product.sizes[product.sizes.length - 1].label}
             </span>
           </div>
-          
+
           <h3 className="font-serif text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
             {product.name}
           </h3>
-          
+
           <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
             {product.description}
           </p>
-          
+
           <div className="flex items-center justify-between">
             <div>
               <span className="text-xs text-muted-foreground">Starting from</span>
-              <p className="font-semibold text-lg text-primary">
+              <p className="font-semibold text-lg text-black">
                 Rs. {lowestPrice.toLocaleString()}
               </p>
             </div>
-            <span className="text-sm text-primary font-medium group-hover:underline">
+            <span className="text-sm text-black font-medium group-hover:underline">
               View Details →
             </span>
           </div>

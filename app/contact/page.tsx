@@ -68,7 +68,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <h2 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6 md:mb-8">
+              <h2 className="font-serif text-xl md:text-2xl font-semibold text-primary mb-6 md:mb-8">
                 Contact Information
               </h2>
 
@@ -111,7 +111,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <h2 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6 md:mb-8">
+              <h2 className="font-serif text-xl md:text-2xl font-semibold text-primary mb-6 md:mb-8">
                 Send Us a Message
               </h2>
 
